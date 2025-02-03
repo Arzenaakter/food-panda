@@ -1,70 +1,7 @@
-// import React, { useState } from "react";
-// import { IoIosArrowDown } from "react-icons/io";
-
-// const FrequentlyBoughtItem = ({ selectedItem }) => {
-//   const [showAll, setShowAll] = useState(false);
-
-//   return (
-//     <div className="px-4 my-6">
-//       <div className="flex justify-between">
-//         <div>
-//           <h3 className="font-semibold text-lg text-gray-900">
-//             Frequently bought together
-//           </h3>
-//           <p className="text-gray-700">Others around you liked this</p>
-//         </div>
-//         <div>
-//           <button className="py-1 px-4 text-sm rounded-full bg-gray-200 text-gray-600 border border-gray-300">
-//             Optional
-//           </button>
-//         </div>
-//       </div>
-//       <div className="mt-4">
-//         {selectedItem.frequentlyItem
-//           .slice(0, showAll ? selectedItem.frequentlyItem.length : 1)
-//           .map((item, index) => (
-//             <div key={index} className="flex justify-between gap-5 space-y-4">
-//               <div className="mb-2">
-//                 <label className="flex items-center space-x-2">
-//                   <input
-//                     type="checkbox"
-//                     name="variation"
-//                     value={item.name}
-//                     className="h-4 w-4 text-black bg-white border-gray-300"
-//                   />
-//                   <img
-//                     src={item?.frequentlyItemImg.src}
-//                     alt="item"
-//                     className="w-16 h-16 rounded-md"
-//                   />
-//                   <span>{item.name}</span>
-//                 </label>
-//               </div>
-//               <p>{item.price}</p>
-//             </div>
-//           ))}
-
-//         {/* Show "See more" only if there are hidden items */}
-//         {selectedItem.frequentlyItem.length > 1 && (
-//           <button
-//             onClick={() => setShowAll(!showAll)}
-//             className="text-gray-800 font-semibold mt-2 flex gap-2 items-center"
-//           >
-//             <IoIosArrowDown />
-//             {showAll ? "" : "See more"}
-//           </button>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default FrequentlyBoughtItem;
-
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-const FrequentlyBoughtItem = ({ selectedItem }) => {
+const FrequentlyBoughtItem = ({ selectedItem, currencySymbol }) => {
   const [showAll, setShowAll] = useState(false);
 
   const totalItems = selectedItem.frequentlyItem.length;
@@ -107,7 +44,10 @@ const FrequentlyBoughtItem = ({ selectedItem }) => {
                   <span>{item.name}</span>
                 </label>
               </div>
-              <p>{item.price}</p>
+              <p className="flex gap-1">
+                <span>{currencySymbol}</span>
+                <span>{item.price}</span>
+              </p>
             </div>
           ))}
 

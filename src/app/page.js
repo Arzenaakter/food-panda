@@ -9,6 +9,8 @@ export default function Home() {
   const [quantity, setQuantity] = useState(1);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const currencySymbol = "Tk";
   const [categories, setCategories] = useState([
     {
       id: "01",
@@ -40,6 +42,26 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
         {
           id: "item_2",
@@ -63,6 +85,26 @@ export default function Home() {
             {
               id: "3",
               name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
               price: 200,
               frequentlyItemImg: Burger,
             },
@@ -100,6 +142,26 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
       ],
     },
@@ -132,6 +194,26 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
         {
           id: "item_5",
@@ -154,6 +236,26 @@ export default function Home() {
             {
               id: "3",
               name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
               price: 200,
               frequentlyItemImg: Burger,
             },
@@ -190,6 +292,26 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
       ],
     },
@@ -218,6 +340,26 @@ export default function Home() {
             {
               id: "3",
               name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
               price: 200,
               frequentlyItemImg: Burger,
             },
@@ -254,6 +396,26 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
       ],
     },
@@ -286,6 +448,118 @@ export default function Home() {
               frequentlyItemImg: Burger,
             },
           ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_114",
+          name: "Lemon Iced Tea",
+          price: 250,
+          description: "Refreshing iced tea with a twist of lemon.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_17", name: "Naga", price: 300 },
+            { id: "variation_18", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_689",
+          name: "Lemon Iced Tea",
+          price: 250,
+          description: "Refreshing iced tea with a twist of lemon.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_17", name: "Naga", price: 300 },
+            { id: "variation_18", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
         },
       ],
     },
@@ -294,7 +568,7 @@ export default function Home() {
       name: "Specials",
       items: [
         {
-          id: "item_10",
+          id: "item_1900",
           name: "Chef's Special Steak",
           price: 500,
           description: "Premium steak cooked to perfection.",
@@ -314,6 +588,164 @@ export default function Home() {
             {
               id: "3",
               name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_1360",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "678",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_1230",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
               price: 200,
               frequentlyItemImg: Burger,
             },
@@ -353,6 +785,7 @@ export default function Home() {
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
             categories={categories}
+            currencySymbol={currencySymbol}
           />
         </div>
         <div className="w-[30%] lg:h-[510px] absolute top-20 border rounded-md mx-5 mt-6 sticky">
@@ -366,6 +799,7 @@ export default function Home() {
             isModalOpen={isModalOpen}
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
+            currencySymbol={currencySymbol}
           />
         </div>
       </div>

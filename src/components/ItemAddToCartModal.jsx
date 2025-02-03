@@ -4,6 +4,7 @@ import { GoPlus } from "react-icons/go";
 import { useEffect, useState, useRef } from "react";
 import StyledSelect from "./Select";
 import FrequentlyBoughtItem from "./FrequentlyBoughtItem";
+import AddOnItemsComponent from "./AddOnItemsComponent";
 
 const ItemAddToCartModal = ({
   incrementQuantity,
@@ -11,11 +12,13 @@ const ItemAddToCartModal = ({
   closeModal,
   quantity,
   selectedItem,
+  currencySymbol,
 }) => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [specialRequest, setSpecialRequest] = useState("");
   const [availabilityOption, setAvailabilityOption] = useState("");
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -40,23 +43,42 @@ const ItemAddToCartModal = ({
   const handleSelect = (variant) => {
     setSelectedVariant(variant);
   };
-
-  const handleAddToCart = (selectedVariant) => {
+  const handleAddToCart = () => {
     const selectedFood = {
-      selectedVariant: selectedVariant,
-      selectedItem: selectedItem,
-      quantity: quantity,
-      specialRequest: specialRequest,
-      availabilityOption: availabilityOption,
+      selectedVariant,
+      selectedItem,
+      quantity,
+      specialRequest,
+      availabilityOption,
+      selectedAddOns, // Include selected add-ons
     };
 
     const existingCart = JSON.parse(localStorage.getItem("selectedFood")) || [];
     const updatedCart = Array.isArray(existingCart)
       ? [...existingCart, selectedFood]
       : [selectedFood];
+
     localStorage.setItem("selectedFood", JSON.stringify(updatedCart));
     closeModal();
   };
+
+  // const handleAddToCart = (selectedVariant) => {
+  //   const selectedFood = {
+  //     selectedVariant: selectedVariant,
+  //     selectedItem: selectedItem,
+  //     quantity: quantity,
+  //     specialRequest: specialRequest,
+  //     availabilityOption: availabilityOption,
+  //   };
+
+  //   const existingCart = JSON.parse(localStorage.getItem("selectedFood")) || [];
+  //   const updatedCart = Array.isArray(existingCart)
+  //     ? [...existingCart, selectedFood]
+  //     : [selectedFood];
+  //   localStorage.setItem("selectedFood", JSON.stringify(updatedCart));
+  //   closeModal();
+  // };
+  // addOnItems;
 
   return (
     <div className="  fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -81,12 +103,12 @@ const ItemAddToCartModal = ({
           <img src={selectedItem.itemImg.src} alt="" className="" />
           <p className="text-gray-600 px-4">{selectedItem.description}</p>
           <p className="text-lg font-bold text-gray-800 mt-4 px-4">
-            Tk {selectedItem.price}
+            {currencySymbol} {selectedItem.price}
           </p>
           {/* variation */}
           <div
             className={`rounded-2xl border p-4 mx-4 ${
-              selectedVariant ? "bg-[#F7F7F7]" : "bg-[#FDF2F7]"
+              selectedVariant ? "bg-[#F7F7F7]" : "bg-primary/5"
             }`}
           >
             <div className="flex justify-between items-center mb-3">
@@ -99,7 +121,7 @@ const ItemAddToCartModal = ({
                   className={`py-1 px-4 text-sm rounded-full ${
                     selectedVariant
                       ? "bg-white text-black border border-gray-300"
-                      : "bg-[#E21B70] text-white"
+                      : "bg-primary text-white"
                   }`}
                 >
                   {selectedVariant ? "Completed" : "Required"}
@@ -123,13 +145,27 @@ const ItemAddToCartModal = ({
                   />
                   <span>{variant.name}</span>
                 </label>
-                <p>Tk {variant.price}</p>
+                <p>
+                  {currencySymbol} {variant.price}
+                </p>
               </div>
             ))}
           </div>
+          {/* addOnItems */}
+          <div>
+            <AddOnItemsComponent
+              selectedItem={selectedItem}
+              currencySymbol={currencySymbol}
+              selectedAddOns={selectedAddOns}
+              setSelectedAddOns={setSelectedAddOns}
+            />
+          </div>
           {/* Frequently bought together */}
           <div>
-            <FrequentlyBoughtItem selectedItem={selectedItem} />
+            <FrequentlyBoughtItem
+              selectedItem={selectedItem}
+              currencySymbol={currencySymbol}
+            />
           </div>
           {/* Special Instructions start */}
           <div className="p-4 mx-auto">
@@ -151,21 +187,13 @@ const ItemAddToCartModal = ({
             </div>
 
             {/* If this item is not available */}
-            <div>
+            {/* <div>
               <h4 className="font-semibold text-lg mb-1">
                 If this item is not available
               </h4>
 
               <StyledSelect setAvailabilityOption={setAvailabilityOption} />
-              {/* <select
-                className={`w-full border rounded-lg p-3 text-sm focus:outline-none `}
-                value={availabilityOption}
-                onChange={(e) => setAvailabilityOption(e.target.value)}
-              >
-                <option value="remove">Remove it from my order</option>
-                <option value="contact">Contact me for alternatives</option>
-              </select> */}
-            </div>
+            </div> */}
           </div>
           {/* Special Instructions end */}
         </div>
@@ -188,23 +216,17 @@ const ItemAddToCartModal = ({
             </button>
           </div>
           <div className="lg:w-[80%]">
-            {selectedVariant ? (
-              <button
-                onClick={() => {
-                  handleAddToCart(selectedVariant);
-                }}
-                className="  px-4 py-3 w-full rounded-lg bg-[#FF2B85] hover:bg-[#C21760] text-white "
-              >
-                Add to Cart
-              </button>
-            ) : (
-              <div
-                className=" px-4 py-3 w-full text-center rounded-lg  
-                     bg-[#CACACA] text-white"
-              >
-                Add to Cart
-              </div>
-            )}
+            <button
+              onClick={handleAddToCart}
+              className={`px-4 py-3 w-full rounded-lg ${
+                selectedVariant
+                  ? "bg-primary/90 hover:bg-primary/100 text-white"
+                  : "bg-gray-400 text-white"
+              }`}
+              disabled={!selectedVariant}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

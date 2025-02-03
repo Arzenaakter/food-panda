@@ -14,6 +14,7 @@ const FoodItemsComponent = ({
   selectedItem,
   setSelectedItem,
   categories,
+  currencySymbol,
 }) => {
   return (
     <div className="p-4 ">
@@ -31,7 +32,7 @@ const FoodItemsComponent = ({
                   <h3 className="text-xl font-semibold">{item.name}</h3>
                   <p className="text-gray-600">{item.description}</p>
                   <p className="text-lg font-bold text-gray-800 mt-2">
-                    Tk {item.price}
+                    {currencySymbol} {item.price}
                   </p>
                 </div>
                 <div
@@ -58,6 +59,7 @@ const FoodItemsComponent = ({
           closeModal={closeModal}
           quantity={quantity}
           selectedItem={selectedItem}
+          currencySymbol={currencySymbol}
         />
       )}
     </div>
