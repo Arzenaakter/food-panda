@@ -1,101 +1,374 @@
-import Image from "next/image";
+"use client";
+import FoodItemsComponent from "@/components/FoodItemsComponent";
+import OrderSummeryCard from "@/components/OrderSummeryCard";
+import TabsHeader from "@/components/TabsHeader";
+import { useState } from "react";
+import Burger from "@/assets/Burger.jpg";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [quantity, setQuantity] = useState(1);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [categories, setCategories] = useState([
+    {
+      id: "01",
+      name: "Popular",
+      items: [
+        {
+          id: "item_1",
+          name: "Giving Mainstream Startled Chicken",
+          price: 250,
+          description:
+            "Chicken with additional served with chicken stuffed with sweetness.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_1", name: "Naga", price: 300 },
+            { id: "variation_2", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_2",
+          name: "High Paid Chicken",
+          price: 300,
+          description:
+            "Chicken with additional served with seafood in good day to eat flavourful.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_3", name: "Naga", price: 300 },
+            { id: "variation_4", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "02",
+      name: "Macdierl X Footpanda",
+      items: [
+        {
+          id: "item_3",
+          name: "Brandivity",
+          price: 250,
+          description:
+            "Pregnant with strong Red Season with, creamy, global & delicious snacks.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_5", name: "Naga", price: 300 },
+            { id: "variation_6", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "03",
+      name: "Teaser's Slides",
+      items: [
+        {
+          id: "item_4",
+          name: "Clean Ring",
+          price: 250,
+          description: "Strain and seasonings with breadcrumbs.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_7", name: "Naga", price: 300 },
+            { id: "variation_8", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_5",
+          name: "Split Sugar Pizza",
+          price: 250,
+          description: "Chicken from above.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_9", name: "Naga", price: 300 },
+            { id: "variation_10", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "04",
+      name: "Rice Meals",
+      items: [
+        {
+          id: "item_6",
+          name: "Spicy Chicken Rice",
+          price: 300,
+          description: "Delicious spicy chicken served with fragrant rice.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_11", name: "Naga", price: 300 },
+            { id: "variation_12", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "05",
+      name: "Classic Burgers",
+      items: [
+        {
+          id: "item_7",
+          name: "Gourmet Burger",
+          price: 250,
+          description: "A classic gourmet burger with fresh ingredients.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_13", name: "Naga", price: 300 },
+            { id: "variation_14", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "06",
+      name: "Desserts",
+      items: [
+        {
+          id: "item_8",
+          name: "Chocolate Lava Cake",
+          price: 250,
+          description: "Warm chocolate cake with molten center.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_15", name: "Naga", price: 300 },
+            { id: "variation_16", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "07",
+      name: "Beverages",
+      items: [
+        {
+          id: "item_9",
+          name: "Lemon Iced Tea",
+          price: 250,
+          description: "Refreshing iced tea with a twist of lemon.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_17", name: "Naga", price: 300 },
+            { id: "variation_18", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "08",
+      name: "Specials",
+      items: [
+        {
+          id: "item_10",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
+  ]);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null);
+    setQuantity(1);
+  };
+  const incrementQuantity = () => setQuantity((prev) => prev + 1);
+  const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
+  return (
+    <div className="relative">
+      <div className=" absolute top-0 z-50  sticky">
+        <TabsHeader categories={categories} />
+      </div>
+      <div className="flex gap-10  ">
+        <div className="w-[70%]  overflow-y-auto">
+          <FoodItemsComponent
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+            setQuantity={setQuantity}
+            quantity={quantity}
+            openModal={openModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+            categories={categories}
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="w-[30%] lg:h-[510px] absolute top-20 border rounded-md mx-5 mt-6 sticky">
+          <OrderSummeryCard
+            incrementQuantity={incrementQuantity}
+            decrementQuantity={decrementQuantity}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            openModal={openModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 }
