@@ -15,6 +15,7 @@ const FoodItemsComponent = ({
   setSelectedItem,
   categories,
   currencySymbol,
+  handleAddToCart,
 }) => {
   return (
     <div className="p-4 ">
@@ -60,6 +61,7 @@ const FoodItemsComponent = ({
           quantity={quantity}
           selectedItem={selectedItem}
           currencySymbol={currencySymbol}
+          handleAddToCart={handleAddToCart}
         />
       )}
     </div>

@@ -2,13 +2,14 @@
 import FoodItemsComponent from "@/components/FoodItemsComponent";
 import OrderSummeryCard from "@/components/OrderSummeryCard";
 import TabsHeader from "@/components/TabsHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Burger from "@/assets/Burger.jpg";
 
 export default function Home() {
   const [quantity, setQuantity] = useState(1);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   const currencySymbol = "Tk";
   const [categories, setCategories] = useState([
@@ -755,6 +756,15 @@ export default function Home() {
     },
   ]);
 
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem("selectedFood")) || [];
+    setCartItems(storedItems);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("selectedFood", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const openModal = (item) => {
     setSelectedItem(item);
     setIsModalOpen(true);
@@ -767,6 +777,10 @@ export default function Home() {
   };
   const incrementQuantity = () => setQuantity((prev) => prev + 1);
   const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1));
+
+  const handleAddToCart = (newItem) => {
+    setCartItems((prevItems) => [...prevItems, newItem]);
+  };
   return (
     <div className="relative">
       <div className=" absolute top-0 z-50  sticky">
@@ -786,6 +800,7 @@ export default function Home() {
             setSelectedItem={setSelectedItem}
             categories={categories}
             currencySymbol={currencySymbol}
+            handleAddToCart={handleAddToCart}
           />
         </div>
         <div className="w-[30%] lg:h-[510px] absolute top-20 border rounded-md mx-5 mt-6 sticky">
@@ -800,6 +815,8 @@ export default function Home() {
             selectedItem={selectedItem}
             setSelectedItem={setSelectedItem}
             currencySymbol={currencySymbol}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
           />
         </div>
       </div>

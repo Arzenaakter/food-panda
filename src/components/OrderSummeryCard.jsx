@@ -15,14 +15,10 @@ const OrderSummeryCard = ({
   selectedItem,
   setSelectedItem,
   currencySymbol,
+  cartItems,
+  setCartItems,
 }) => {
   const [activeTab, setActiveTab] = useState("pickup");
-  const [cartItems, setCartItems] = useState([]);
-  console.log("cartItems", cartItems);
-  useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("selectedFood")) || [];
-    setCartItems(storedItems);
-  }, []);
 
   const updateQuantity = (index, newQuantity) => {
     const updatedCart = cartItems.map((item, i) => {

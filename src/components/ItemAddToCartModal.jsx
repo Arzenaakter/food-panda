@@ -13,6 +13,7 @@ const ItemAddToCartModal = ({
   quantity,
   selectedItem,
   currencySymbol,
+  handleAddToCart,
 }) => {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [selectedVariant, setSelectedVariant] = useState(null);
@@ -43,42 +44,38 @@ const ItemAddToCartModal = ({
   const handleSelect = (variant) => {
     setSelectedVariant(variant);
   };
-  const handleAddToCart = () => {
-    const selectedFood = {
-      selectedVariant,
-      selectedItem,
-      quantity,
-      specialRequest,
-      availabilityOption,
-      selectedAddOns, // Include selected add-ons
-    };
-
-    const existingCart = JSON.parse(localStorage.getItem("selectedFood")) || [];
-    const updatedCart = Array.isArray(existingCart)
-      ? [...existingCart, selectedFood]
-      : [selectedFood];
-
-    localStorage.setItem("selectedFood", JSON.stringify(updatedCart));
-    closeModal();
-  };
-
-  // const handleAddToCart = (selectedVariant) => {
+  // const handleAddToCart = () => {
   //   const selectedFood = {
-  //     selectedVariant: selectedVariant,
-  //     selectedItem: selectedItem,
-  //     quantity: quantity,
-  //     specialRequest: specialRequest,
-  //     availabilityOption: availabilityOption,
+  //     selectedVariant,
+  //     selectedItem,
+  //     quantity,
+  //     specialRequest,
+  //     availabilityOption,
+  //     selectedAddOns, // Include selected add-ons
   //   };
 
   //   const existingCart = JSON.parse(localStorage.getItem("selectedFood")) || [];
   //   const updatedCart = Array.isArray(existingCart)
   //     ? [...existingCart, selectedFood]
   //     : [selectedFood];
+
   //   localStorage.setItem("selectedFood", JSON.stringify(updatedCart));
   //   closeModal();
   // };
-  // addOnItems;
+
+  const onAddToCart = () => {
+    const selectedFood = {
+      selectedVariant,
+      selectedItem,
+      quantity,
+      specialRequest,
+      availabilityOption,
+      selectedAddOns,
+    };
+
+    handleAddToCart(selectedFood); // Use the handleAddToCart function from props
+    closeModal();
+  };
 
   return (
     <div className="  fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -89,7 +86,7 @@ const ItemAddToCartModal = ({
             isHeaderVisible ? "sticky top-0" : "hidden"
           }`}
         >
-          <h2 className="text-xl font-bold">{selectedItem.name}</h2>
+          <h2 className="text-xl font-bold">{selectedItem?.name}</h2>
         </div>
         <button
           onClick={closeModal}
@@ -100,10 +97,10 @@ const ItemAddToCartModal = ({
 
         {/* Content */}
         <div ref={contentRef} className=" overflow-y-auto  flex-1">
-          <img src={selectedItem.itemImg.src} alt="" className="" />
-          <p className="text-gray-600 px-4">{selectedItem.description}</p>
+          <img src={selectedItem?.itemImg?.src} alt="" className="" />
+          <p className="text-gray-600 px-4">{selectedItem?.description}</p>
           <p className="text-lg font-bold text-gray-800 mt-4 px-4">
-            {currencySymbol} {selectedItem.price}
+            {currencySymbol} {selectedItem?.price}
           </p>
           {/* variation */}
           <div
@@ -217,7 +214,7 @@ const ItemAddToCartModal = ({
           </div>
           <div className="lg:w-[80%]">
             <button
-              onClick={handleAddToCart}
+              onClick={onAddToCart}
               className={`px-4 py-3 w-full rounded-lg ${
                 selectedVariant
                   ? "bg-primary/90 hover:bg-primary/100 text-white"
