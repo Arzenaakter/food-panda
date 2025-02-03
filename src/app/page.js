@@ -754,6 +754,196 @@ export default function Home() {
         },
       ],
     },
+    {
+      id: "09",
+      name: "Chiken",
+      items: [
+        {
+          id: "item_1900",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_1360",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "678",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+        {
+          id: "item_1230",
+          name: "Chef's Special Steak",
+          price: 500,
+          description: "Premium steak cooked to perfection.",
+          itemImg: Burger,
+          variation: [
+            { id: "variation_19", name: "Naga", price: 300 },
+            { id: "variation_20", name: "Garlic", price: 350 },
+          ],
+          frequentlyItem: [
+            { id: "1", name: "Naga", price: 300, frequentlyItemImg: Burger },
+            {
+              id: "2",
+              name: "Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "gerlic",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+          addOnItems: [
+            {
+              id: "1",
+              name: "Extra Cheese",
+              price: 300,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "2",
+              name: "Smoked Chicken",
+              price: 250,
+              frequentlyItemImg: Burger,
+            },
+            {
+              id: "3",
+              name: "Water",
+              price: 200,
+              frequentlyItemImg: Burger,
+            },
+          ],
+        },
+      ],
+    },
   ]);
 
   useEffect(() => {

@@ -13,10 +13,19 @@ const TabsHeader = ({ categories }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
 
-  const scrollTabs = (direction, isAuto = false) => {
+  // Function to update arrow visibility
+  const updateArrowVisibility = () => {
     const container = tabContainerRef.current;
     if (!container) return;
+    setShowLeftArrow(container.scrollLeft > 0);
+    setShowRightArrow(
+      container.scrollLeft < container.scrollWidth - container.clientWidth
+    );
+  };
 
+  // Function to scroll the tabs
+  const scrollTabs = (direction) => {
+    const container = tabContainerRef.current;
     const scrollAmount = 200;
 
     if (direction === "left") {
@@ -25,59 +34,37 @@ const TabsHeader = ({ categories }) => {
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
 
-    if (!isAuto) {
-      checkScrollButtons();
-    }
+    setTimeout(updateArrowVisibility, 300); // Delay to update state after scroll
   };
 
-  const checkScrollButtons = () => {
-    const container = tabContainerRef.current;
-    if (!container) return;
-
-    setShowLeftArrow(container.scrollLeft > 0);
-    setShowRightArrow(
-      container.scrollLeft < container.scrollWidth - container.clientWidth
-    );
-  };
-
+  // Automatically scroll when the last visible tab is reached
   useEffect(() => {
     const container = tabContainerRef.current;
     if (!container) return;
 
-    const handleScroll = () => {
-      checkScrollButtons();
-    };
+    const activeTabElement = document.getElementById(`tab-${activeTab}`);
+    if (activeTabElement) {
+      const tabOffset = activeTabElement.offsetLeft;
+      const tabWidth = activeTabElement.offsetWidth;
+      const containerScrollLeft = container.scrollLeft;
+      const containerWidth = container.clientWidth;
 
-    container.addEventListener("scroll", handleScroll);
-    checkScrollButtons();
-
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Automatically scroll right when needed
-    const container = tabContainerRef.current;
-    if (!container) return;
-
-    if (showRightArrow) {
-      setTimeout(() => scrollTabs("right", true), 2000);
+      // If the active tab is outside the visible area, adjust the scroll
+      if (
+        tabOffset + tabWidth > containerScrollLeft + containerWidth ||
+        tabOffset < containerScrollLeft
+      ) {
+        container.scrollTo({
+          left: tabOffset - containerWidth / 2 + tabWidth / 2,
+          behavior: "smooth",
+        });
+      }
     }
-  }, [showRightArrow]);
-
-  useEffect(() => {
-    // Automatically scroll left when needed
-    const container = tabContainerRef.current;
-    if (!container) return;
-
-    if (showLeftArrow) {
-      setTimeout(() => scrollTabs("left", true), 2000);
-    }
-  }, [showLeftArrow]);
+    updateArrowVisibility();
+  }, [activeTab]);
 
   return (
-    <div className="shadow-md h-[66px] flex items-center gap-5 px-10 relative fixed bg-white">
+    <div className="shadow-md h-[66px] flex items-center gap-5 px-10 relative fixed bg-white w-full">
       <div className="w-[20%] relative top-1">
         <MenuItemSerach />
       </div>
@@ -94,12 +81,13 @@ const TabsHeader = ({ categories }) => {
 
         <div
           ref={tabContainerRef}
-          className="flex overflow-x-auto scroll-smooth space-x-4 p-2"
-          style={{ scrollbarWidth: "none" }}
+          className="flex overflow-x-auto scroll-smooth space-x-4 p-2 no-scrollbar"
+          onScroll={updateArrowVisibility}
         >
           {categories.map((tab) => (
             <div
               key={tab.id}
+              id={`tab-${tab.id}`}
               className={`flex-shrink-0 px-4 top-2 items-center h-[50px] py-2 cursor-pointer hover:rounded-t-md hover:bg-[#F0F2F2] relative group`}
               onClick={() => setActiveTab(tab.id)}
             >
