@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const MenuItemSerach = () => {
+const MenuItemSerach = ({ categories, setCategories, originalCategories }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      // Reset to original categories when search field is empty
+      setCategories(originalCategories);
+      return;
+    }
+
+    const filteredCategories = originalCategories
+      .map((category) => {
+        const filteredItems = category.items.filter(
+          (item) =>
+            category.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.description.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        return { ...category, items: filteredItems };
+      })
+      .filter((category) => category.items.length > 0);
+
+    setCategories(filteredCategories);
+  }, [searchTerm, originalCategories, setCategories]);
+
   return (
     <>
       {/* search start */}
@@ -35,6 +59,8 @@ const MenuItemSerach = () => {
               id="default-search"
               class="block w-full p-2 ps-10 text-sm border rounded-2xl bg-[#F7F7F7]"
               placeholder="Search in menu"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               required
             />
           </div>

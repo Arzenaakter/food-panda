@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { Link } from "react-scroll";
 
-const TabsHeader = ({ categories }) => {
+const TabsHeader = ({ categories, setCategories, originalCategories }) => {
   const tabContainerRef = useRef(null);
   const [activeTab, setActiveTab] = useState(categories[0]?.id);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -66,7 +66,11 @@ const TabsHeader = ({ categories }) => {
   return (
     <div className="shadow-md h-[66px] flex items-center gap-5 px-10 relative fixed bg-white w-full">
       <div className="w-[20%] relative top-1">
-        <MenuItemSerach />
+        <MenuItemSerach
+          categories={categories}
+          setCategories={setCategories}
+          originalCategories={originalCategories}
+        />
       </div>
 
       <div className="relative flex items-center w-[80%]">
