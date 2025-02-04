@@ -64,8 +64,8 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
   }, [activeTab]);
 
   return (
-    <div className="shadow-md h-[66px] flex items-center gap-5 px-10 relative fixed bg-white w-full">
-      <div className="w-[20%] relative top-1">
+    <div className="shadow-md h-[66px] flex items-center lg:gap-5 gap-8 lg:px-10 ps-2 lg:ps-10 pe-8 lg:pe-10 relative fixed bg-white w-full">
+      <div className="lg:w-[20%] w-[10%] relative top-1">
         <MenuItemSerach
           categories={categories}
           setCategories={setCategories}
@@ -73,11 +73,11 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
         />
       </div>
 
-      <div className="relative flex items-center w-[80%]">
+      <div className="relative flex items-center lg:w-[80%] w-[90%]">
         {showLeftArrow && (
           <button
             onClick={() => scrollTabs("left")}
-            className="absolute text-2xl left-0 z-10 border bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
+            className="absolute text-2xl hidden md:block left-0 z-10 border bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
           >
             <MdOutlineKeyboardArrowLeft />
           </button>
@@ -103,6 +103,7 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
                 offset={-100}
                 duration={400}
                 onSetActive={() => setActiveTab(tab.id)}
+                className="text-sm lg:text-base"
               >
                 {tab.name}
               </Link>
@@ -124,7 +125,7 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
         {showRightArrow && (
           <button
             onClick={() => scrollTabs("right")}
-            className="absolute border right-0 z-10 text-2xl bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
+            className="absolute border hidden md:block right-0 z-10 text-2xl bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
           >
             <MdOutlineKeyboardArrowRight />
           </button>

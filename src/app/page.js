@@ -982,8 +982,8 @@ export default function Home() {
           originalCategories={AllFoodItems}
         />
       </div>
-      <div className="flex gap-10  ">
-        <div className="w-[70%]  overflow-y-auto">
+      <div className="flex gap-10 flex-col lg:flex-row ">
+        <div className="lg:w-[70%]  overflow-y-auto">
           <FoodItemsComponent
             incrementQuantity={incrementQuantity}
             decrementQuantity={decrementQuantity}
@@ -999,7 +999,7 @@ export default function Home() {
             handleAddToCart={handleAddToCart}
           />
         </div>
-        <div className="w-[30%] lg:h-[510px] absolute top-20 border rounded-md mx-5 mt-6 sticky">
+        <div className="lg:w-[30%] lg:h-[510px] absolute top-20 border rounded-md mx-5 mt-6 sticky">
           <OrderSummeryCard
             incrementQuantity={incrementQuantity}
             decrementQuantity={decrementQuantity}

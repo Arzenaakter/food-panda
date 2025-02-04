@@ -37,7 +37,7 @@ const MenuItemSerach = ({ categories, setCategories, originalCategories }) => {
             Search
           </label>
           <div class="relative">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none ">
               <svg
                 class="w-4 h-4 text-gray-500 dark:text-gray-400"
                 aria-hidden="true"
@@ -57,7 +57,7 @@ const MenuItemSerach = ({ categories, setCategories, originalCategories }) => {
             <input
               type="search"
               id="default-search"
-              class="block w-full p-2 ps-10 text-sm border rounded-2xl bg-[#F7F7F7]"
+              class="block w-full p-2 ps-10  text-sm border lg:rounded-2xl rounded-full bg-white lg:bg-[#F7F7F7] shadow-xl lg:shadow-none"
               placeholder="Search in menu"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
