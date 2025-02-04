@@ -75,12 +75,14 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
 
       <div className="relative flex items-center lg:w-[80%] w-[90%]">
         {showLeftArrow && (
-          <button
-            onClick={() => scrollTabs("left")}
-            className="absolute text-2xl hidden md:block left-0 z-10 border bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
-          >
-            <MdOutlineKeyboardArrowLeft />
-          </button>
+          <span className="hidden md:block absolute left-0 z-10">
+            <button
+              onClick={() => scrollTabs("left")}
+              className=" text-2xl   border bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
+            >
+              <MdOutlineKeyboardArrowLeft />
+            </button>
+          </span>
         )}
 
         <div
@@ -123,12 +125,15 @@ const TabsHeader = ({ categories, setCategories, originalCategories }) => {
         </div>
 
         {showRightArrow && (
-          <button
-            onClick={() => scrollTabs("right")}
-            className="absolute border hidden md:block right-0 z-10 text-2xl bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
-          >
-            <MdOutlineKeyboardArrowRight />
-          </button>
+          <span className="absolute hidden md:block right-0 z-10">
+            {" "}
+            <button
+              onClick={() => scrollTabs("right")}
+              className=" border  text-2xl bg-white flex items-center justify-center h-10 w-10 shadow-lg rounded-full"
+            >
+              <MdOutlineKeyboardArrowRight />
+            </button>
+          </span>
         )}
       </div>
     </div>
